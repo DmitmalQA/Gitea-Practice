@@ -10,3 +10,5 @@ node_modules/
 /allure-results
 tests/fixtures.spec.ts
 .states
+/tests/ui
+/test-data/messages

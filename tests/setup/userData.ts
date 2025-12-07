@@ -5,6 +5,7 @@ export type SavedUser = {
   userName: string
   userEmail?: string
   userPassword: string
+  userToken: string
 }
 
 export async function saveUserData(user: SavedUser, relativeFilePath: string): Promise<string> {

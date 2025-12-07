@@ -21,9 +21,21 @@ test('Register testUser1 and save storage state', async({ app }) => {
     await expect(app.dashboardPage.navBarUserName).toHaveText(randomUserName)
     await app.page.context().storageState({ path: '.states/testUser1.json'})
 
+    await app.page.locator('div[data-tooltip-content="Profile and Settings…"]').click()
+    await app.page.locator('[href="/user/settings"]').click()
+    await app.page.locator('[href="/user/settings/applications"]').click()
+    await app.page.locator('#name').fill('API-Auto-Token')
+    const checkboxes = app.page.locator('[value*="write"]')
+    for (const checkbox of await checkboxes.all()){
+        await checkbox.check()
+    }
+    await app.page.locator('button:has-text("Generate token")').click()
+    const token = await app.page.locator("div.info.message p").innerText()
+
     saveUserData({
         userName: randomUserName,
         userEmail: randomEmail,
-        userPassword: password
+        userPassword: password,
+        userToken: token
     }, './test-data/users/testUser1.json')
 })
