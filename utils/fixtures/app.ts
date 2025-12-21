@@ -1,6 +1,6 @@
 import { test as base, Page } from "@playwright/test"
 
-import RegisterPage from "../../pom/registerPage"
+import RegisterPage from "../../pom/RegisterPage"
 import DashboardPage from "../../pom/DashboardPage"
 import NewOrganisationPage from "../../pom/NewOrganisationPage"
 import NewRepositoryPage from "../../pom/NewRepositoryPage"
